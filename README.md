@@ -19,3 +19,10 @@ https://bing.com/
 https://yahoo.com/
 
 ##### News
+
+https://foxnews.com/
+
+https://cnn.com/
+
+https://nbcnews.com/
+
