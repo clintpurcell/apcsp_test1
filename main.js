@@ -1,23 +1,76 @@
 var sq;
+var feed = [];
+var numNut = 12;
+
+var a = [1,2,3]
 
 function setup() {
     createCanvas(740, 480);
     sq = new Squirrel();
+    
+    //create nuts
+    for(var i = 0; i < numNut; i++) {
+        feed.push(new Nut(random(width), random(height)));
+    }
 }
+
 
 function draw() {
     background(0,255,0);
     sq.display();
+    
+    //show deez nuts
+    for(var i = 0; i < feed.length; i++) {
+        feed[i].display();
+    }
+}
+
+function mousePressed() {
+    sq.eat();
+}
+
+function Nut(x, y) {
+    // keyword this
+    // makes variables public on the object
+    
+    // public instance variables
+    this.x = x;
+    this.y = y;
+    this.color = color(255, 0, 0);
+    this.nutsize = 50;
+    
+    this.display = function() {
+        fill(this.color);
+        ellipse(this.x, this.y, this.nutSize, this.nutSize);
+    
+    }
 }
 
 function Squirrel() {
     
+        this.getDistance = function(other) {
+        var dist = Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2));
+        return dist;
+    };
+        
+    this.eat = function() {
+    for(var i = 0; i < feed.length ; i++) {
+        var nut = feed[i];
+        var d = this.getDistance(nut);
+        var r1 = nut.nutSize / 2;
+        var r2 = diameter / 2;
+        if(r1 + r2 > d) {
+            feed.splice(i, 1);
+        }
+    }
+}
+        
+//the puppy
+        
     
     this.display = function() {
         var x = mouseX;
         var y = mouseY;
-    
-//the puppy
         
         noStroke();
         fill('#52C5DC');
