@@ -10,7 +10,7 @@ https://daringfireball.net/projects/markdown/syntax
 I vimd'd
 Do you even vim, bro?
 
-#### Search Engines
+## Search Engines
 
 https://google.com/
 
@@ -18,11 +18,12 @@ https://bing.com/
 
 https://yahoo.com/
 
-##### News
+## News
 
 https://foxnews.com/
 
 https://cnn.com/
 
 https://nbcnews.com/
+
 

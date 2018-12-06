@@ -17,7 +17,8 @@ function Squirrel() {
         var x = mouseX;
         var y = mouseY;
     
-
+//the puppy
+        
         noStroke();
         fill('#52C5DC');
         ellipse(x, y, 200, 200);
