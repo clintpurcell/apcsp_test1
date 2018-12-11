@@ -1,7 +1,9 @@
 var sq;
 var feed = [];
-var numNut = 12;
-
+var numNut = prompt("How many nuts do you want to feed the squirrel?");
+if(amount < 0) {
+    var amount = prompt("Please enter a positive number of nuts.")
+}
 var a = [1,2,3]
 
 function setup() {
@@ -47,24 +49,26 @@ function Nut(x, y) {
 }
 
 function Squirrel() {
-    
+    var count = 0;
     var x = mouseX;
     var y = mouseY;
     var diameter = 200;
     
-        this.getDistance = function(other) {
+        this.getDistance = function (other) {
         var dist = Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2));
         return dist;
     };
         
     this.eat = function() {
-    for(var i = 0; i < feed.length ; i++) {
+    for(var i = feed.length - 1; i >= 0 ; i--) {
         var nut = feed[i];
-        var d = this.getDistance(Nut);
+        var d = this.getDistance(nut);
         var r1 = nut.nutSize / 2;
         var r2 = diameter / 2;
         if(r1 + r2 > d) {
             feed.splice(i, 1);
+            feed.push(new Nut(random(width), random(height)));
+            count += 10;
         }
     }
 }
@@ -72,14 +76,13 @@ function Squirrel() {
         
     
     this.display = function() {
-        var x = mouseX;
-        var y = mouseY;
-
+        x = mouseX;
+        y = mouseY;
         // CLINTS ANIMAL
 
         noStroke();
         fill('brown');
-        ellipse(x, y, 200, 200);
+        ellipse(x, y, 200 + count, 200 + count);
 
         noStroke();
         fill('brown');
@@ -90,16 +93,16 @@ function Squirrel() {
         triangle(x+20, y-90, x+40, y-130, x+60, y-80);
 
         fill('#FFFFFF');
-        ellipse(x-38, y-26, 64, 64);
+        ellipse(x-38, y-26, 64+count, 64+count);
 
         fill('#FFFFFF');
-        ellipse(x+40, y-26, 64, 64);
+        ellipse(x+40, y-26, 64+count, 64+count);
 
         fill('#EE3E36');
-        ellipse(x+40, y-26, 40, 40);
+        ellipse(x+40, y-26, 40+count, 40+count/2);
 
         fill('#EE3E36');
-        ellipse(x-38, y-26, 40, 40);
+        ellipse(x-38, y-26, 40+count*1.25, 40+count);
 
         fill('#000000');
         ellipse(x, y+20, 40, 40);
