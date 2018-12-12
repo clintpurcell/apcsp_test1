@@ -7,13 +7,18 @@ if(amount < 0) {
 var a = [1,2,3]
 
 function setup() {
-    createCanvas(740, 480);
+    createCanvas(windowWidth, windowHeight);
+    noCursor();
     sq = new Squirrel();
     
     //create nuts
     for(var i = 0; i < numNut; i++) {
         feed.push(new Nut(random(width), random(height)));
     }
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight)
 }
 
 
@@ -68,7 +73,7 @@ function Squirrel() {
         if(r1 + r2 > d) {
             feed.splice(i, 1);
             feed.push(new Nut(random(width), random(height)));
-            count += 10;
+            count += 5;
         }
     }
 }
@@ -82,15 +87,15 @@ function Squirrel() {
 
         noStroke();
         fill('brown');
-        ellipse(x, y, 200 + count, 200 + count);
+        ellipse(x, y, 200 + count*1.1, 200 + count*1.1);
 
         noStroke();
         fill('brown');
-        triangle(x-50, y-70, x-40, y-130, x+20, y-80);
+        triangle(x-50-count/2, y-70+count, x-40, y-130-count, x+20, y-80);
 
         noStroke();
         fill('brown');
-        triangle(x+20, y-90, x+40, y-130, x+60, y-80);
+        triangle(x+20-count, y-90, x+40, y-130-count, x+60+count/2, y-60+count);
 
         fill('#FFFFFF');
         ellipse(x-38, y-26, 64+count, 64+count);
@@ -99,20 +104,20 @@ function Squirrel() {
         ellipse(x+40, y-26, 64+count, 64+count);
 
         fill('#EE3E36');
-        ellipse(x+40, y-26, 40+count, 40+count/2);
+        ellipse(x+40, y-26, 40+count/2, 40+count/4);
 
         fill('#EE3E36');
-        ellipse(x-38, y-26, 40+count*1.25, 40+count);
+        ellipse(x-38, y-26, 40+count*1.1/2, 40+count/2);
 
         fill('#000000');
-        ellipse(x, y+20, 40, 40);
+        ellipse(x, y+20, 40+count/2, 40+count/2);
 
         noStroke();
         fill('#FFFFFF');
-        triangle(x-70, y+70, x+20, y+80, x, y+100);
+        triangle(x-70-count, y+70, x+20, y+80, x, y+100+count);
 
         noStroke();
         fill('#000000');
-        triangle(x-50, y+80, x+10, y+80, x, y+95);
+        triangle(x-50-count, y+80, x+10, y+80, x, y+95+count);
     }
 }
