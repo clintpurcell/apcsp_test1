@@ -4,7 +4,6 @@ var numNut = prompt("How many nuts do you want to feed the squirrel?");
 if(amount < 0) {
     var amount = prompt("Please enter a positive number of nuts.")
 }
-var a = [1,2,3]
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -23,7 +22,7 @@ function windowResized() {
 
 
 function draw() {
-    background(0,255,0);
+    background(0,0,200);
     sq.display();
     
     //show deez nuts
@@ -45,11 +44,10 @@ function Nut(x, y) {
     this.y = y;
     this.color = color(255, 0, 0);
     this.nutSize = 50;
-    
+        
     this.display = function() {
         fill(this.color);
         ellipse(this.x, this.y, this.nutSize, this.nutSize);
-    
     }
 }
 
