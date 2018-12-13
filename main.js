@@ -91,11 +91,11 @@ function Squirrel() {
 
         noStroke();
         fill('brown');
-        triangle(x-50-count/2, y-70+count, x-40, y-130-count, x+20, y-80);
+        triangle(x-50, y-70, x-40, y-130-count, x+20, y-80);
 
         noStroke();
         fill('brown');
-        triangle(x+20-count, y-90, x+40, y-130-count, x+60+count/2, y-60+count);
+        triangle(x+20, y-90, x+40, y-130-count, x+60, y-60);
 
         fill('#FFFFFF');
         ellipse(x-38, y-26, 64+count, 64+count);
